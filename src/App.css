@@ -2,37 +2,106 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input,
+textarea {
+  outline: none;
+  resize: none;
+}
+
+.ideas-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 0;
+}
+
+.title {
+  margin: 10px 20px 0px;
+  font-family: Arial, sans-serif;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 0 10px;
+}
+
+.search,
+.add-new {
+  font-size: 14px;
+  padding: 5px;
+  margin: 8px;
+}
+
+.search {
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+.add-new {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px;
+  font-weight: bolder;
+  background-color: #eee;
+  outline: none;
+}
+
+.card {
+  font-family: "Permanent Marker", cursive;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: #88bbc1;
+  border: 1px solid #000;
+  box-shadow: 2px 2px 3px lightgrey;
+  border-radius: 15%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.idea-name,
+.idea-description {
+  font-family: "Permanent Marker", cursive;
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.idea-name {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+}
+
+.idea-description {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.idea-delete {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 20px;
+  color: lightgrey;
+  padding: 5px;
+}
+
+.idea-delete:hover {
+  color: black;
+  cursor: pointer;
 }

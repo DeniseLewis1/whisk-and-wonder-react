@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header>
         <div>
-          <h1>Whisk & Wonder</h1>
+          <h1 className="title">Whisk & Wonder</h1>
           <h2>Baking Ideas</h2>
           <aside className="controls">
             <button onClick={() => {}} className="add-new">
