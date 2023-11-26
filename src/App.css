@@ -11,6 +11,22 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: pink;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header, main, footer {
+  width: 100%;
+  background: lightblue;
+}
+
+header  {
+  border-bottom: 1px solid gray;
 }
 
 input,
@@ -59,13 +75,13 @@ textarea {
 }
 
 .card {
-  font-family: "Permanent Marker", cursive;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   width: 200px;
   height: 200px;
   margin: 10px;
   background-color: #88bbc1;
   border: 1px solid #000;
-  box-shadow: 2px 2px 3px lightgrey;
+  box-shadow: 2px 2px 3px gray;
   border-radius: 15%;
   display: flex;
   flex-direction: column;
@@ -74,7 +90,7 @@ textarea {
 
 .idea-name,
 .idea-description {
-  font-family: "Permanent Marker", cursive;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   width: 100%;
   padding: 8px 14px;
   background: transparent;
@@ -95,7 +111,7 @@ textarea {
 .idea-delete {
   position: absolute;
   top: 0px;
-  right: 5px;
+  right: 7px;
   font-size: 20px;
   color: lightgrey;
   padding: 5px;
