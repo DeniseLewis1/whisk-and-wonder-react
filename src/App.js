@@ -1,6 +1,9 @@
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [color, setColor] = useState("teal"); //randomize
+
   return (
     <div className="App">
       <header className="wrapper">
@@ -25,7 +28,7 @@ function App() {
         <div>
           <section className="all-ideas">
             <ul className="ideas-list">
-              <li className="card">
+              <li className="card" style={{background: color}}>
                 <input
                   type="text"
                   placeholder="Name"
@@ -42,6 +45,7 @@ function App() {
                 <span className="idea-delete" onClick={() => {}}>
                   X
                 </span>
+                <input type="color" className="idea-color" value={color} onChange={e => setColor(e.target.value)} />
               </li>
             </ul>
           </section>

@@ -121,3 +121,10 @@ textarea {
   color: black;
   cursor: pointer;
 }
+
+.idea-color {
+  width: 10%;
+  position: absolute;
+  bottom: 0px;
+  right: 7px;
+}
