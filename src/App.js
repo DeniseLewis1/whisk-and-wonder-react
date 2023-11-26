@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header>
+      <header className="wrapper">
         <div>
           <h1 className="title">Whisk & Wonder</h1>
           <h2>Baking Ideas</h2>
@@ -21,31 +21,35 @@ function App() {
           </aside>
         </div>
       </header>
-      <main>
-        <section className="all-ideas">
-          <ul className="ideas-list">
-            <li className="card">
-              <input
-                type="text"
-                placeholder="Name"
-                className="idea-name"
-                value={""}
-                onChange={() => {}}
-              />
-              <textarea
-                placeholder="Description..."
-                className="idea-description"
-                value={""}
-                onChange={() => {}}
-              />
-              <span className="idea-delete" onClick={() => {}}>
-                X
-              </span>
-            </li>
-          </ul>
-        </section>
+      <main className="wrapper">
+        <div>
+          <section className="all-ideas">
+            <ul className="ideas-list">
+              <li className="card">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="idea-name"
+                  value={""}
+                  onChange={() => {}}
+                />
+                <textarea
+                  placeholder="Description..."
+                  className="idea-description"
+                  value={""}
+                  onChange={() => {}}
+                />
+                <span className="idea-delete" onClick={() => {}}>
+                  X
+                </span>
+              </li>
+            </ul>
+          </section>
+        </div>
       </main>
-      <footer>&copy; 2023 Whisk & Wonder</footer>
+      <footer className="wrapper">
+        <div>&copy; 2023 Whisk & Wonder</div>
+      </footer>
     </div>
   );
 }
