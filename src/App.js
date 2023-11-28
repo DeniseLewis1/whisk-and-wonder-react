@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import Idea from './components/Idea';
 
 function App() {
   const [ideas, setIdeas] = useState([{
@@ -8,7 +9,6 @@ function App() {
     description: "",
     doesMatchSearch: true
   }])
-  const [color, setColor] = useState("teal"); //randomize
 
   const addIdea = () => {
     const newIdea = {
@@ -44,25 +44,7 @@ function App() {
         <div>
           <section className="all-ideas">
             <ul className="ideas-list">
-              <li className="card" style={{background: color}}>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="idea-name"
-                  value={""}
-                  onChange={() => {}}
-                />
-                <textarea
-                  placeholder="Description..."
-                  className="idea-description"
-                  value={""}
-                  onChange={() => {}}
-                />
-                <span className="idea-delete" onClick={() => {}}>
-                  X
-                </span>
-                <input type="color" className="idea-color" value={color} onChange={e => setColor(e.target.value)} />
-              </li>
+              <Idea />
             </ul>
           </section>
         </div>
