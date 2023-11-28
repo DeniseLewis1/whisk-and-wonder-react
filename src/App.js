@@ -2,7 +2,23 @@ import './App.css';
 import React, { useState } from 'react';
 
 function App() {
+  const [ideas, setIdeas] = useState([{
+    id: Date.now(),
+    name: "",
+    description: "",
+    doesMatchSearch: true
+  }])
   const [color, setColor] = useState("teal"); //randomize
+
+  const addIdea = () => {
+    const newIdea = {
+      id: Date.now(),
+      name: "",
+      description: "",
+      doesMatchSearch: true
+    };
+    setIdeas([newIdea, ...ideas]);
+  };
 
   return (
     <div className="App">
@@ -11,7 +27,7 @@ function App() {
           <h1 className="title">Whisk & Wonder</h1>
           <h2>Baking Ideas</h2>
           <aside className="controls">
-            <button onClick={() => {}} className="add-new">
+            <button onClick={addIdea} className="add-new">
               + New Idea
             </button>
             <input
