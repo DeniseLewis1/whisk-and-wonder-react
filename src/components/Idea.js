@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
-const Idea = () => {
-    const [color, setColor] = useState("teal"); //randomize
-
+const Idea = ({ idea, updateColor }) => {
     return (
-        <li className="card" style={{background: color}}>
+        <li className="card" style={{background: idea.color}}>
             <input
             type="text"
             placeholder="Name"
@@ -21,7 +19,7 @@ const Idea = () => {
             <span className="idea-delete" onClick={() => {}}>
             X
             </span>
-            <input type="color" className="idea-color" value={color} onChange={e => setColor(e.target.value)} />
+            <input type="color" className="idea-color" value={idea.color} onChange={e => updateColor(idea.id, e.target.value)} />
       </li>
     );
 };

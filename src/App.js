@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import Idea from './components/Idea';
 
 function App() {
+  const [color, setColor] = useState("#fff"); //randomize
+  const defaultColor = "teal";
+
   const [ideas, setIdeas] = useState([{
     id: Date.now(),
     name: "",
     description: "",
+    color: defaultColor,
     doesMatchSearch: true
   }])
 
@@ -15,9 +19,23 @@ function App() {
       id: Date.now(),
       name: "",
       description: "",
+      color: defaultColor,
       doesMatchSearch: true
     };
     setIdeas([newIdea, ...ideas]);
+  };
+
+  const updateColor = (ideaId, newColor) => {
+    const updatedIdeas = ideas.map(idea => {
+      if (idea.id === ideaId) {
+        idea.color = newColor;
+        setColor(newColor);
+        return idea;
+      } else {
+        return idea;
+      }
+    });
+    setIdeas([...updatedIdeas]);
   };
 
   return (
@@ -44,7 +62,7 @@ function App() {
         <div>
           <section className="all-ideas">
             <ul className="ideas-list">
-              <Idea />
+              {ideas.map((idea, index) => <Idea key={index} idea={idea} updateColor={updateColor} />)}
             </ul>
           </section>
         </div>
