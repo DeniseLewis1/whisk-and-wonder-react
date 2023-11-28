@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Idea = ({ idea, updateColor }) => {
+const Idea = ({ idea, deleteIdea, updateColor }) => {
     return (
         <li className="card" style={{background: idea.color}}>
             <input
@@ -16,7 +16,7 @@ const Idea = ({ idea, updateColor }) => {
             value={""}
             onChange={() => {}}
             />
-            <span className="idea-delete" onClick={() => {}}>
+            <span className="idea-delete" onClick={() => {deleteIdea(idea.id)}}>
             X
             </span>
             <input type="color" className="idea-color" value={idea.color} onChange={e => updateColor(idea.id, e.target.value)} />

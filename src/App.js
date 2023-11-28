@@ -25,6 +25,11 @@ function App() {
     setIdeas([newIdea, ...ideas]);
   };
 
+  const deleteIdea = (ideaId) => {
+    const updatedIdeas = ideas.filter(idea => idea.id !== ideaId);
+    setIdeas([...updatedIdeas]);
+  };
+
   const updateColor = (ideaId, newColor) => {
     const updatedIdeas = ideas.map(idea => {
       if (idea.id === ideaId) {
@@ -62,7 +67,7 @@ function App() {
         <div>
           <section className="all-ideas">
             <ul className="ideas-list">
-              {ideas.map((idea, index) => <Idea key={index} idea={idea} updateColor={updateColor} />)}
+              {ideas.map((idea, index) => <Idea key={index} idea={idea} deleteIdea={deleteIdea} updateColor={updateColor} />)}
             </ul>
           </section>
         </div>
