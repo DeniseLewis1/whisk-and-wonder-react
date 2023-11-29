@@ -30,6 +30,25 @@ function App() {
     setIdeas([...updatedIdeas]);
   };
 
+  const editIdea = (ideaId, updatedKey, updatedValue) => {
+    console.log(updatedValue);
+    const updatedIdeas = ideas.map(idea => {
+      if (idea.id !== ideaId) {
+        return idea;
+      } else {
+        if (updatedKey === "name") {
+          idea.name = updatedValue;
+          return idea;
+        } else {
+          idea.description = updatedValue;
+          return idea;
+        }
+      }
+    });
+
+    setIdeas([...updatedIdeas]);
+  };
+
   const updateColor = (ideaId, newColor) => {
     const updatedIdeas = ideas.map(idea => {
       if (idea.id === ideaId) {
@@ -67,7 +86,7 @@ function App() {
         <div>
           <section className="all-ideas">
             <ul className="ideas-list">
-              {ideas.map((idea, index) => <Idea key={index} idea={idea} deleteIdea={deleteIdea} updateColor={updateColor} />)}
+              {ideas.map((idea, index) => <Idea key={index} idea={idea} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />)}
             </ul>
           </section>
         </div>
