@@ -12,7 +12,9 @@ function App() {
     description: "",
     color: defaultColor,
     doesMatchSearch: true
-  }])
+  }]);
+
+  const [searchText, setSearchText] = useState("");
 
   const addIdea = () => {
     const newIdea = {
@@ -49,6 +51,42 @@ function App() {
     setIdeas([...updatedIdeas]);
   };
 
+  const searchIdea = (text) => {
+    const newSearchText = text.toLowerCase();
+
+    const updatedIdeas = ideas.map((idea) => {
+      if (!newSearchText) {
+        idea.doesMatchSearch = true;
+        return idea;
+      } else {
+        idea.doesMatchSearch =
+          idea.name.toLowerCase().includes(newSearchText) ||
+          idea.description.toLowerCase().includes(newSearchText);
+        return idea;
+      }
+    });
+    setIdeas([...updatedIdeas]);
+    setSearchText(newSearchText);
+  };
+
+  const searchInput = (e) => searchIdea(e.target.value);
+
+  const notesList = () => {
+    const matchSearch = (idea) => idea.doesMatchSearch;
+    const matches = ideas.filter(matchSearch);
+    const renderIdea = (idea) => (
+      <Idea
+        idea={idea}
+        key={idea.id}
+        deleteIdea={deleteIdea}
+        editIdea={editIdea}
+      />
+    );
+    const ideaElements = matches.map(renderIdea);
+    /*return <ul className="ideas-list">{ideaElements}</ul>;*/
+    return ideaElements;
+  };
+
   const updateColor = (ideaId, newColor) => {
     const updatedIdeas = ideas.map(idea => {
       if (idea.id === ideaId) {
@@ -76,8 +114,8 @@ function App() {
               type="text" 
               placeholder="Type here to search..." 
               className="search" 
-              value={""}
-              onChange={() => {}}
+              value={searchText}
+              onChange={searchInput}
             />
           </aside>
         </div>
@@ -86,7 +124,8 @@ function App() {
         <div>
           <section className="all-ideas">
             <ul className="ideas-list">
-              {ideas.map((idea, index) => <Idea key={index} idea={idea} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />)}
+              {/* {ideas.map((idea, index) => <Idea key={index} idea={idea} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />)} */}
+              {notesList()}
             </ul>
           </section>
         </div>
