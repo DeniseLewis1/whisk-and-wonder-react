@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Idea from './components/Idea';
+import IdeasList from './components/IdeasList';
 
 function App() {
   const [color, setColor] = useState("#fff"); //randomize
@@ -71,23 +72,6 @@ function App() {
 
   const searchInput = (e) => searchIdea(e.target.value);
 
-  const notesList = () => {
-    const matchSearch = (idea) => idea.doesMatchSearch;
-    const matches = ideas.filter(matchSearch);
-    const renderIdea = (idea) => (
-      <Idea
-        idea={idea}
-        key={idea.id}
-        deleteIdea={deleteIdea}
-        editIdea={editIdea}
-        updateColor={updateColor}
-      />
-    );
-    const ideaElements = matches.map(renderIdea);
-    /*return <ul className="ideas-list">{ideaElements}</ul>;*/
-    return ideaElements;
-  };
-
   const updateColor = (ideaId, newColor) => {
     const updatedIdeas = ideas.map(idea => {
       if (idea.id === ideaId) {
@@ -124,10 +108,7 @@ function App() {
       <main className="wrapper">
         <div>
           <section className="all-ideas">
-            <ul className="ideas-list">
-              {/* {ideas.map((idea, index) => <Idea key={index} idea={idea} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />)} */}
-              {notesList()}
-            </ul>
+              <IdeasList ideas={ideas} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />
           </section>
         </div>
       </main>
