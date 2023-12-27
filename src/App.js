@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Header from './components/Header';
 import IdeasList from './components/IdeasList';
+import Footer from './components/Footer';
 
 function App() {
   const [color, setColor] = useState("#fff"); //randomize
@@ -87,9 +88,7 @@ function App() {
     <div className="App">
       <Header addIdea={addIdea} searchIdea={searchIdea} searchText={searchText} />
       <IdeasList ideas={ideas} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />
-      <footer className="wrapper">
-        <div>&copy; 2023 Whisk & Wonder</div>
-      </footer>
+      <Footer />
     </div>
   );
 }
