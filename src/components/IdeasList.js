@@ -14,7 +14,16 @@ const IdeasList = ({ ideas, deleteIdea, editIdea, updateColor }) => {
         />
     );
     const ideaElements = matches.map(renderIdea);
-    return <ul className="ideas-list">{ideaElements}</ul>;
+
+    return (
+        <main className="wrapper">
+            <div>
+            <section className="all-ideas">
+                <ul className="ideas-list">{ideaElements}</ul>
+            </section>
+            </div>
+        </main>
+    );
 };
 
 export default IdeasList;

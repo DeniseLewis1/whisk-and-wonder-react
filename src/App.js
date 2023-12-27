@@ -86,13 +86,7 @@ function App() {
   return (
     <div className="App">
       <Header addIdea={addIdea} searchIdea={searchIdea} searchText={searchText} />
-      <main className="wrapper">
-        <div>
-          <section className="all-ideas">
-              <IdeasList ideas={ideas} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />
-          </section>
-        </div>
-      </main>
+      <IdeasList ideas={ideas} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />
       <footer className="wrapper">
         <div>&copy; 2023 Whisk & Wonder</div>
       </footer>
