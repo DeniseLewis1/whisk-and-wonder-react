@@ -80,6 +80,7 @@ function App() {
         key={idea.id}
         deleteIdea={deleteIdea}
         editIdea={editIdea}
+        updateColor={updateColor}
       />
     );
     const ideaElements = matches.map(renderIdea);
