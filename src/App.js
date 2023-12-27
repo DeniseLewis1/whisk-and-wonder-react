@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import Idea from './components/Idea';
+import Header from './components/Header';
 import IdeasList from './components/IdeasList';
 
 function App() {
@@ -70,8 +70,6 @@ function App() {
     setSearchText(newSearchText);
   };
 
-  const searchInput = (e) => searchIdea(e.target.value);
-
   const updateColor = (ideaId, newColor) => {
     const updatedIdeas = ideas.map(idea => {
       if (idea.id === ideaId) {
@@ -87,24 +85,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="wrapper">
-        <div>
-          <h1 className="title">Whisk & Wonder</h1>
-          <h2>Baking Ideas</h2>
-          <aside className="controls">
-            <button onClick={addIdea} className="add-new">
-              + New Idea
-            </button>
-            <input
-              type="text" 
-              placeholder="Type here to search..." 
-              className="search" 
-              value={searchText}
-              onChange={searchInput}
-            />
-          </aside>
-        </div>
-      </header>
+      <Header addIdea={addIdea} searchIdea={searchIdea} searchText={searchText} />
       <main className="wrapper">
         <div>
           <section className="all-ideas">
