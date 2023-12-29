@@ -1,6 +1,10 @@
 import React from 'react';
+import { Heart } from "react-feather";
 
-const Idea = ({ idea, deleteIdea, editIdea, updateColor }) => {
+const Idea = ({ idea, deleteIdea, editIdea, updateColor, favoriteIdeas, addFavorite }) => {
+    const alreadyFavorite = favoriteIdeas.find(favorite => favorite.id === idea.id);
+    const faveStyle = alreadyFavorite ? "#333" : "";
+
     return (
         <li className="card" style={{background: idea.color}}>
             <input
@@ -20,6 +24,7 @@ const Idea = ({ idea, deleteIdea, editIdea, updateColor }) => {
             X
             </span>
             <input type="color" className="idea-color" value={idea.color} onChange={e => updateColor(idea.id, e.target.value)} />
+            <p className="add-favorite" onClick={() => addFavorite(idea.id)}><Heart style={{fill: faveStyle}} /></p>
       </li>
     );
 };

@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 function App() {
   const [color, setColor] = useState("#fff"); //randomize
   const defaultColor = "teal";
-
   const [ideas, setIdeas] = useState(JSON.parse(window.localStorage.getItem("savedIdeas")) || [{
     id: Date.now(),
     name: "",
@@ -15,8 +14,8 @@ function App() {
     color: defaultColor,
     doesMatchSearch: true
   }]);
-
   const [searchText, setSearchText] = useState("");
+  const [favoriteIdeas, setFavoriteIdeas] = useState([]);
 
   useEffect(() => {
     window.localStorage.setItem("savedIdeas", JSON.stringify(ideas));
@@ -88,10 +87,26 @@ function App() {
     setIdeas([...updatedIdeas]);
   };
 
+  const addFavorite = (ideaId) => {
+    const selectedIdea = ideas.find(idea => idea.id === ideaId);
+    setFavoriteIdeas([...favoriteIdeas, selectedIdea]);
+  };
+
   return (
     <div className="App">
-      <Header addIdea={addIdea} searchIdea={searchIdea} searchText={searchText} />
-      <IdeasList ideas={ideas} deleteIdea={deleteIdea} editIdea={editIdea} updateColor={updateColor} />
+      <Header 
+        addIdea={addIdea} 
+        searchIdea={searchIdea} 
+        searchText={searchText} 
+      />
+      <IdeasList 
+        ideas={ideas} 
+        deleteIdea={deleteIdea} 
+        editIdea={editIdea} 
+        updateColor={updateColor} 
+        favoriteIdeas={favoriteIdeas} 
+        addFavorite={addFavorite} 
+      />
       <Footer />
     </div>
   );
