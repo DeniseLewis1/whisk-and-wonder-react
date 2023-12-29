@@ -94,12 +94,16 @@ function App() {
     updateFavorites(ideaId);
   };
 
-  const addFavorite = (ideaId) => {
+  const toggleFavorite = (ideaId) => {
     const selectedIdea = ideas.find(idea => idea.id === ideaId);
     const alreadyFavorite = favoriteIdeas.find(favorite => favorite.id === selectedIdea.id);
 
     if (!alreadyFavorite) {
       setFavoriteIdeas([...favoriteIdeas, selectedIdea]);
+    }
+    else {
+      const updatedFavoriteIdeas = favoriteIdeas.filter(favorite => favorite.id !== ideaId);
+      setFavoriteIdeas([...updatedFavoriteIdeas]);
     }
   };
 
@@ -128,7 +132,7 @@ function App() {
         editIdea={editIdea} 
         updateColor={updateColor} 
         favoriteIdeas={favoriteIdeas} 
-        addFavorite={addFavorite} 
+        toggleFavorite={toggleFavorite} 
       />
       <Footer />
     </div>

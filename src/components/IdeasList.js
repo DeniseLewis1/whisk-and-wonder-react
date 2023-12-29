@@ -1,7 +1,7 @@
 import React from "react";
 import Idea from "./Idea";
 
-const IdeasList = ({ ideas, deleteIdea, editIdea, updateColor, favoriteIdeas, addFavorite }) => {
+const IdeasList = ({ ideas, deleteIdea, editIdea, updateColor, favoriteIdeas, toggleFavorite }) => {
     const matchSearch = (idea) => idea.doesMatchSearch;
     const matches = ideas.filter(matchSearch);
     const renderIdea = (idea) => (
@@ -12,7 +12,7 @@ const IdeasList = ({ ideas, deleteIdea, editIdea, updateColor, favoriteIdeas, ad
             editIdea={editIdea}
             updateColor={updateColor}
             favoriteIdeas={favoriteIdeas}
-            addFavorite={addFavorite}
+            toggleFavorite={toggleFavorite}
         />
     );
     const ideaElements = matches.map(renderIdea);

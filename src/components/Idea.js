@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heart } from "react-feather";
 
-const Idea = ({ idea, deleteIdea, editIdea, updateColor, favoriteIdeas, addFavorite }) => {
+const Idea = ({ idea, deleteIdea, editIdea, updateColor, favoriteIdeas, toggleFavorite }) => {
     const alreadyFavorite = favoriteIdeas.find(favorite => favorite.id === idea.id);
     const faveStyle = alreadyFavorite ? "#333" : "";
 
@@ -24,7 +24,7 @@ const Idea = ({ idea, deleteIdea, editIdea, updateColor, favoriteIdeas, addFavor
             X
             </span>
             <input type="color" className="idea-color" value={idea.color} onChange={e => updateColor(idea.id, e.target.value)} />
-            <p className="add-favorite" onClick={() => addFavorite(idea.id)}><Heart style={{fill: faveStyle}} /></p>
+            <p className="add-favorite" onClick={() => toggleFavorite(idea.id)}><Heart style={{fill: faveStyle}} /></p>
       </li>
     );
 };
