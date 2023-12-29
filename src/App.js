@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import IdeasList from './components/IdeasList';
 import Footer from './components/Footer';
@@ -8,7 +8,7 @@ function App() {
   const [color, setColor] = useState("#fff"); //randomize
   const defaultColor = "teal";
 
-  const [ideas, setIdeas] = useState([{
+  const [ideas, setIdeas] = useState(JSON.parse(window.localStorage.getItem("savedIdeas")) || [{
     id: Date.now(),
     name: "",
     description: "",
@@ -17,6 +17,10 @@ function App() {
   }]);
 
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    window.localStorage.setItem("savedIdeas", JSON.stringify(ideas));
+  }, [ideas]);
 
   const addIdea = () => {
     const newIdea = {
