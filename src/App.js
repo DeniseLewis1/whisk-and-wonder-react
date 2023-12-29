@@ -38,7 +38,9 @@ function App() {
 
   const deleteIdea = (ideaId) => {
     const updatedIdeas = ideas.filter(idea => idea.id !== ideaId);
+    const updatedFavoriteIdeas = favoriteIdeas.filter(favorite => favorite.id !== ideaId);
     setIdeas([...updatedIdeas]);
+    setFavoriteIdeas([...updatedFavoriteIdeas]);
   };
 
   const editIdea = (ideaId, updatedKey, updatedValue) => {
@@ -57,6 +59,7 @@ function App() {
     });
 
     setIdeas([...updatedIdeas]);
+    updateFavorites(ideaId);
   };
 
   const searchIdea = (text) => {
@@ -88,6 +91,7 @@ function App() {
       }
     });
     setIdeas([...updatedIdeas]);
+    updateFavorites(ideaId);
   };
 
   const addFavorite = (ideaId) => {
@@ -97,6 +101,18 @@ function App() {
     if (!alreadyFavorite) {
       setFavoriteIdeas([...favoriteIdeas, selectedIdea]);
     }
+  };
+
+  const updateFavorites = (ideaId) => {
+    const selectedIdea = ideas.find(idea => idea.id === ideaId);
+    const updatedFavorites = favoriteIdeas.map(favorite => {
+      if (favorite.id === ideaId) {
+        return selectedIdea;
+      } else {
+        return favorite;
+      }
+    });
+    setFavoriteIdeas([...updatedFavorites]);
   };
 
   return (
