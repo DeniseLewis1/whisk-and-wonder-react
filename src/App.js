@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 function App() {
   const [color, setColor] = useState("#fff"); //randomize
   const defaultColor = "teal";
-  const [ideas, setIdeas] = useState(JSON.parse(window.localStorage.getItem("savedIdeas")) || [{
+  const [ideas, setIdeas] = useState(JSON.parse(window.localStorage.getItem("allIdeas")) || [{
     id: Date.now(),
     name: "",
     description: "",
@@ -15,11 +15,15 @@ function App() {
     doesMatchSearch: true
   }]);
   const [searchText, setSearchText] = useState("");
-  const [favoriteIdeas, setFavoriteIdeas] = useState([]);
+  const [favoriteIdeas, setFavoriteIdeas] = useState(JSON.parse(window.localStorage.getItem("favoriteIdeas")) || []);
 
   useEffect(() => {
-    window.localStorage.setItem("savedIdeas", JSON.stringify(ideas));
+    window.localStorage.setItem("allIdeas", JSON.stringify(ideas));
   }, [ideas]);
+
+  useEffect(() => {
+    window.localStorage.setItem("favoriteIdeas", JSON.stringify(favoriteIdeas));
+  }, [favoriteIdeas]);
 
   const addIdea = () => {
     const newIdea = {
@@ -38,7 +42,6 @@ function App() {
   };
 
   const editIdea = (ideaId, updatedKey, updatedValue) => {
-    console.log(updatedValue);
     const updatedIdeas = ideas.map(idea => {
       if (idea.id !== ideaId) {
         return idea;
@@ -89,7 +92,11 @@ function App() {
 
   const addFavorite = (ideaId) => {
     const selectedIdea = ideas.find(idea => idea.id === ideaId);
-    setFavoriteIdeas([...favoriteIdeas, selectedIdea]);
+    const alreadyFavorite = favoriteIdeas.find(favorite => favorite.id === selectedIdea.id);
+
+    if (!alreadyFavorite) {
+      setFavoriteIdeas([...favoriteIdeas, selectedIdea]);
+    }
   };
 
   return (
