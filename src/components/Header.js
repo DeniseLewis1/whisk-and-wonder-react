@@ -1,6 +1,7 @@
 import React from "react";
+import { Filter } from "react-feather";
 
-const Header = ({ addIdea, searchIdea, searchText }) => {
+const Header = ({ addIdea, searchIdea, searchText, categories, category, handleCategoryChange }) => {
     const searchInput = (e) => searchIdea(e.target.value);
 
     return (
@@ -19,6 +20,13 @@ const Header = ({ addIdea, searchIdea, searchText }) => {
               value={searchText}
               onChange={searchInput}
             />
+            <form className='category-filter'>
+                <Filter />
+                <label htmlFor='category'>Filter Ideas:</label>
+                <select id='category' name='category' value={category} onChange={handleCategoryChange}>
+                    {categories.map(category => <option value={category} key={category}>{category}</option>)}
+                </select>
+            </form>
           </aside>
         </div>
       </header>

@@ -16,6 +16,8 @@ function App() {
   }]);
   const [searchText, setSearchText] = useState("");
   const [favoriteIdeas, setFavoriteIdeas] = useState(JSON.parse(window.localStorage.getItem("favoriteIdeas")) || []);
+  const [category, setCategory] = useState("All");
+  const categories = ["All", "Favorites"];
 
   useEffect(() => {
     window.localStorage.setItem("allIdeas", JSON.stringify(ideas));
@@ -119,15 +121,20 @@ function App() {
     setFavoriteIdeas([...updatedFavorites]);
   };
 
+  const handleCategoryChange = (e) => setCategory(e.target.value);
+
   return (
     <div className="App">
       <Header 
         addIdea={addIdea} 
         searchIdea={searchIdea} 
         searchText={searchText} 
+        categories={categories} 
+        category={category} 
+        handleCategoryChange={handleCategoryChange}
       />
       <IdeasList 
-        ideas={ideas} 
+        ideas={category !== "All" ? favoriteIdeas : ideas} 
         deleteIdea={deleteIdea} 
         editIdea={editIdea} 
         updateColor={updateColor} 
