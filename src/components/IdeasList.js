@@ -18,11 +18,11 @@ const IdeasList = ({ ideas, deleteIdea, editIdea, updateColor, favoriteIdeas, to
     const ideaElements = matches.map(renderIdea);
 
     return (
-        <main className="wrapper">
-            <div>
-            <section className="all-ideas">
-                <ul className="ideas-list">{ideaElements}</ul>
-            </section>
+        <main>
+            <div className="wrapper">
+                <section className="all-ideas">
+                    <ul className="ideas-list">{ideaElements}</ul>
+                </section>
             </div>
         </main>
     );
