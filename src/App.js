@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [color, setColor] = useState("#fff"); //randomize
-  const defaultColor = "teal";
+  const defaultColor = "#008080";
   const [ideas, setIdeas] = useState(JSON.parse(window.localStorage.getItem("allIdeas")) || [{
     id: Date.now(),
     name: "",
